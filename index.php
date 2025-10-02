@@ -15,15 +15,15 @@ class Peliculas
     private Genero $genero;
     private int $duracion;
     private int $añoEstreno;
-    private array $pais;
+    private array $paises;
 
-    public function __construct(string $nombre, Genero $genero, int $duracion, int $añoEstreno, array $pais)
+    public function __construct(string $nombre, Genero $genero, int $duracion, int $añoEstreno, array $paises)
     {
         $this->nombre = $nombre;
         $this->genero = $genero;
         $this->duracion = $duracion;
         $this->añoEstreno = $añoEstreno;
-        $this->pais = $pais;
+        $this->paises = $paises;
     }
     public function getNombre(): string
     {
@@ -41,22 +41,22 @@ class Peliculas
     {
         return $this->añoEstreno;
     }
-    public function getPais(): string
+    public function getPaises(): array
     {
-        return $this->pais;
+        return $this->paises;
     }
 
     public function __toString()
     {
-        implode()
-        return "Nombre: {$this->nombre}, Genero: {$this->genero->value}, duracion: {$this->duracion}, Año de estreno: {$this->añoEstreno}, pais: {$this->pais} \n";
+        $paisesStr = implode(", ", $this->paises);
+        return "Nombre: {$this->nombre}, Genero: {$this->genero->value}, duracion: {$this->duracion}, Año de estreno: {$this->añoEstreno}, pais o paises: {$paisesStr} \n";
     }
 }
 $peliculas = [
-    new Peliculas("El guardian invisible", Genero::Accion, 220, 2002, "España"),
-    new Peliculas("seven", Genero::Accion, 156, 1997, "Italia"),
-    new Peliculas("el indomable will hunting", Genero::Terror, 180, 2025, "Portugal"),
-    new Peliculas("a todo gas", Genero::Comedia, 156, 1992, "Belgica"),
+    new Peliculas("El guardian invisible", Genero::Accion, 220, 2002, ["España"]),
+    new Peliculas("seven", Genero::Accion, 156, 1997, ["Italia","Brasil"]),
+    new Peliculas("el indomable will hunting", Genero::Terror, 180, 2025, ["Portugal","Ecuador"]),
+    new Peliculas("a todo gas", Genero::Comedia, 156, 1992, ["Belgica", "Estonia"]),
 ];
 
 function peliGenero(array $peliculas, Genero $genero): void
@@ -76,8 +76,6 @@ function peliGenero(array $peliculas, Genero $genero): void
         }
     }
 }
-
-
 
 
 peliGenero($peliculas, Genero :: Accion);
